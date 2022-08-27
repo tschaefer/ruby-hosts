@@ -1,0 +1,38 @@
+require: rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+Style/NegatedIf:
+  Enabled: False
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'lib/hosts/app/**/*.rb'
+
+Metrics/MethodLength:
+  CountAsOne:
+    - 'array'
+    - 'hash'
+    - 'heredoc'
+  Max: 50
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+RSpec/ExampleLength:
+  CountAsOne:
+    - 'array'
+    - 'hash'
+    - 'heredoc'
+  Max: 10
+
+RSpec/FilePath:
+  Enabled: False
+
+RSpec/MultipleExpectations:
+  Max: 5
