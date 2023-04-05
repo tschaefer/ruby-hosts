@@ -1,10 +1,13 @@
-require: rubocop-rspec
+---
+require:
+  - rubocop-rspec
+  - rubocop-rake
 
 AllCops:
   NewCops: enable
 
 Style/NegatedIf:
-  Enabled: False
+  Enabled: false
 
 Style/Documentation:
   Exclude:
@@ -30,9 +33,3 @@ RSpec/ExampleLength:
     - 'hash'
     - 'heredoc'
   Max: 10
-
-RSpec/FilePath:
-  Enabled: False
-
-RSpec/MultipleExpectations:
-  Max: 5

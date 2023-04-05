@@ -1,29 +1,13 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift "#{File.dirname(__FILE__)}/lib"
-
-desc 'Build documentation.'
-task :doc do
-  system 'rdoc lib/hosts.rb lib/hosts/entries.rb'
-end
-
-desc 'Run rspec tests.'
-task :test do
-  system 'rspec'
-end
-
-desc 'Start a console session with Hosts loaded'
-task :console do
-  require 'irb'
-  require 'irb/completion'
-  require 'hosts'
-
-  ARGV.clear
-  IRB.start
-end
-
+require 'bundler/gem_tasks'
+require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
+
+FileList['tasks/**/*.rake'].each(&method(:import))
+
+RSpec::Core::RakeTask.new(:rspec)
 RuboCop::RakeTask.new
 
-desc "Run tasks 'test' and 'rubocop' by default."
-task default: %w[test rubocop]
+desc "Run tasks 'rubocop' by default."
+task default: %w[rubocop]
