@@ -30,13 +30,6 @@ require_relative 'hosts/table'
 #   ──────────────────────────────────────
 #   127.0.0.1 localhost
 #   ...
-#
-#   puts Hosts.to_table
-#
-#   ADDRESS   HOSTNAME        ALIASES
-#   ──────────────────────────────────────
-#   127.0.0.1 localhost
-#   ...
 module Hosts
   class << self
     # :nodoc:

@@ -8,7 +8,7 @@ require_relative 'app/set'
 
 module Hosts
   module App
-    class Command < Hosts::App::BaseCommand
+    class Command < Hosts::App::BaseCommand # rubocop:disable Style/Documentation
       subcommand 'add', 'add new hosts entry', Hosts::App::AddCommand
       subcommand 'add-alias', 'add list of aliases to hosts entry', Hosts::App::AddAliasCommand
       subcommand 'list', 'list all hosts entries', Hosts::App::ListCommand

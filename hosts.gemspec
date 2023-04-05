@@ -19,8 +19,8 @@ Gem::Specification.new do |spec|
       * add, remove entry aliases
       * set entry hostname
   DESC
-  spec.homepage    = 'https://github.com/tschaefer/hosts'
-  spec.license     = 'MIT'
+  spec.homepage = 'https://github.com/tschaefer/ruby-hosts'
+  spec.license  = 'MIT'
 
   spec.files                 = Dir['lib/**/*']
   spec.bindir                = 'bin'
@@ -29,6 +29,6 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 3.1'
 
   spec.metadata['rubygems_mfa_required'] = 'true'
-  spec.metadata['source_code_uri']       = 'https://github.com/tschaefer/hosts'
-  spec.metadata['bug_tracker_uri']       = 'https://github.com/tschaefer/hosts/issues'
+  spec.metadata['source_code_uri']       = 'https://github.com/tschaefer/ruby-hosts'
+  spec.metadata['bug_tracker_uri']       = 'https://github.com/tschaefer/ruby-hosts/issues'
 end
