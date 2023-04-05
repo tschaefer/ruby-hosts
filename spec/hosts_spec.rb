@@ -25,17 +25,27 @@ RSpec.describe Hosts do
     end
 
     context 'when file is existing' do
-      it 'returns an object' do
+      it 'returns an object', :aggregate_failures do
         hosts = described_class.parse(file.path)
 
-        expect(hosts).to be_an_instance_of(Module)
+        methods = %i[
+          add
+          add_alias
+          entries
+          list
+          remove
+          remove_alias
+          set_hostname
+          to_table
+        ]
+        expect(hosts.public_methods(false)).to include(*methods)
         expect(hosts.size).to be(7)
       end
     end
   end
 
   describe '#list' do
-    it 'returns a host entries list ordered by address' do
+    it 'returns a host entries list ordered by address', :aggregate_failures do
       list = described_class.parse(file.path).list
 
       expect(list).to be_an(Array)
@@ -105,7 +115,7 @@ RSpec.describe Hosts do
   end
 
   describe '#remove_alias' do
-    it 'deletes aliases' do
+    it 'deletes aliases', :aggregate_failures do
       hosts = described_class.parse(file.path)
       hosts.remove_alias('127.0.1.1', ['hostname'])
 
@@ -140,7 +150,7 @@ RSpec.describe Hosts do
   end
 
   describe '#to_table' do
-    it 'returns pretty table with hosts entries' do
+    it 'returns pretty table with hosts entries', :aggregate_failures do
       hosts = described_class.parse(file.path)
 
       expect(hosts.to_table).to match(/ADDRESS\s+HOSTNAME\s+ALIASES/)

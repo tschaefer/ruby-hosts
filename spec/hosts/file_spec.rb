@@ -19,9 +19,9 @@ RSpec.describe Hosts::File do
     end
 
     context 'when file is existing and valid' do
-      let(:assert) { "#{File.dirname(__FILE__)}/data/hosts" }
+      let(:assert) { "#{File.dirname(__FILE__)}/../data/hosts" }
 
-      it 'returns an array with elements' do
+      it 'returns an array with elements', :aggregate_failures do
         entries = hostsfile.parse_file(assert)
 
         expect(entries).to be_an(Array)
@@ -38,7 +38,7 @@ RSpec.describe Hosts::File do
       end
     end
 
-    context 'when file is existing and no entries' do
+    context 'when file is existing and has no entries' do
       let(:tempfile) { Tempfile.new }
 
       it 'writes a legend line' do

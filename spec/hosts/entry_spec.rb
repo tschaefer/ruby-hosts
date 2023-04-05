@@ -9,7 +9,7 @@ RSpec.describe Hosts::Entry do
 
   describe '#new' do
     context 'with bad arguments' do
-      it 'raises an error' do
+      it 'raises an error', :aggregate_failures do
         expect { described_class.new('bad', 'localhost') }
           .to raise_error(ArgumentError, /Invalid address/)
         expect { described_class.new('127.0.0.1', 'löcälhöst') }
@@ -20,7 +20,7 @@ RSpec.describe Hosts::Entry do
     end
 
     context 'with valid arguments' do
-      it 'succeeds' do
+      it 'succeeds', :aggregate_failures do
         expect(described_class.new('127.0.0.1', 'localhost'))
           .to be_an(described_class)
         expect(described_class.new('127.0.0.1', 'localhost', ['localhost.localdomain']))
@@ -41,8 +41,8 @@ RSpec.describe Hosts::Entry do
       it 'succeeds' do
         entry.add_alias('localhost.fqdn.example.com')
 
-        expect(entry.aliases).to match_array(
-          ['localhost.localdomain', 'localhost.fqdn.example.com']
+        expect(entry.aliases).to contain_exactly(
+          'localhost.fqdn.example.com', 'localhost.localdomain'
         )
       end
     end
@@ -82,7 +82,7 @@ RSpec.describe Hosts::Entry do
     end
   end
 
-  describe 'set_address' do
+  describe '#set_address' do
     context 'with bad argument' do
       it 'raises an error' do
         expect { entry.set_address('333.333.333.333') }
