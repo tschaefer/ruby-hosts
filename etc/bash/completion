@@ -1,0 +1,74 @@
+_hostsctl_list() {
+    local cur prev words cword
+    _get_comp_words_by_ref cur prev words cword
+
+    local options='--help --no-pager --no-legend'
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=($(compgen -W "${options}" -- "$cur"))
+        return
+    fi
+}
+
+_hostsctl_options() {
+    local cur prev words cword
+    _get_comp_words_by_ref cur prev words cword
+
+    local options='--help'
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=($(compgen -W "${options}" -- "$cur"))
+        return
+    fi
+}
+
+
+_hostsctl() {
+    local cur prev words cword
+    _get_comp_words_by_ref cur prev words cword
+
+    local actions='list add remove set-hostname add-alias remove-alias'
+    local options='--help --man --version --file --host'
+
+    local word action
+    for word in "${words[@]}"; do
+        case $word in
+            list)
+                _hostsctl_list
+                return
+                ;;
+            add|remove|set-hostname|add-alias|remove-alias)
+                _hostsctl_options
+                return
+                ;;
+        esac
+    done
+
+
+    case "$prev" in
+        --file)
+            _filedir
+            return
+            ;;
+        --host)
+            _known_hosts_real -- "$cur"
+            return
+            ;;
+        --help|--man|--version)
+            return
+            ;;
+    esac
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=($(compgen -W "${options}" -- "$cur"))
+        return
+    fi
+
+    COMPREPLY=($(compgen -W "${actions}" -- "$cur"))
+
+    return
+}
+
+complete -F _hostsctl hostsctl
+
+# vim: ft=sh
