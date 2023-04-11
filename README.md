@@ -4,7 +4,8 @@
 
 ## Introduction
 
-**hostsctl** may be used to query and change the system hosts file entries.
+**hostsctl** may be used to query and change the system hosts file entries,
+local and remote.
 
 * list entries
 * add new entry
@@ -38,10 +39,11 @@ For usage of command line tool `hostsctl` see following help output.
         set-hostname       set hostname of hosts entry
 
     Options:
-        -h, --help         print help
-        -m, --man          show manpage
-        -v, --version      show version
-        -f, --file FILE    hosts file (default: system file)
+        -h, --help                print help
+        -m, --man                 show manpage
+        -v, --version             show version
+        -f, --file FILE           hosts file (default: system file)
+        -H, --host [USER@]HOST    operate on remote host
 
 For API documentation use `rake doc`.
 

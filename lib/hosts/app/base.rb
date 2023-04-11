@@ -38,9 +38,10 @@ module Hosts
       end
 
       option ['-f', '--file'], 'FILE', 'hosts file (default: system file)'
+      option ['-H', '--host'], 'HOST', 'remote host'
 
       def hosts
-        Hosts.parse(file)
+        Hosts.parse(file: file || '/etc/hosts', remote: host || nil)
       rescue StandardError => e
         bailout(e)
       end

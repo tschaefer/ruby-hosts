@@ -2,6 +2,7 @@
 
 require_relative 'hosts/entry'
 require_relative 'hosts/file'
+require_relative 'hosts/remote'
 require_relative 'hosts/table'
 
 ##
@@ -35,19 +36,24 @@ module Hosts
     # :nodoc:
     include Hosts::File
     include Hosts::Table
+    include Hosts::Remote
     # :doc:
 
     ##
     # Parses optional given hosts file (default system hosts file), create
     # entries list and return object.
-    def parse(file = nil)
-      file = '/etc/hosts' if file.nil?
-      raise ArgumentError, "No such file: #{file}" if !CoreFile.exist?(file)
-
+    def parse(file: '/etc/hosts', remote: nil)
       @file = file
+      @remote = remote
+      @tempfile = nil
       @entries = {}
 
-      parse_file(file).each do |entry|
+      remote_parse
+
+      path = @tempfile || @file
+      raise ArgumentError, "No such file: #{path}" if !CoreFile.exist?(path)
+
+      parse_file(path).each do |entry|
         (address, hostname, aliases) = entry
 
         entry = Hosts::Entry.new(address, hostname, aliases || [])
@@ -148,6 +154,8 @@ module Hosts
     private
 
     def save
+      return remote_save if !@remote.nil?
+
       write_file(@file, render_table(list))
     end
   end
