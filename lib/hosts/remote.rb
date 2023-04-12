@@ -5,7 +5,7 @@ require 'tempfile'
 require 'net/ssh'
 
 module Hosts
-  module Remote
+  module Remote # rubocop:disable Style/Documentation
     private
 
     def remote_execute(cmd)

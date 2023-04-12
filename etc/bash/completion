@@ -51,7 +51,7 @@ _hostsctl() {
             return
             ;;
         --host)
-            _known_hosts_real -- "$cur"
+            _known_hosts_real -a "$cur"
             return
             ;;
         --help|--man|--version)
