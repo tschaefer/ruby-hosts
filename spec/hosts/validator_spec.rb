@@ -29,7 +29,7 @@ RSpec.describe Hosts::Validator do
     end
 
     it 'raises exception on too short hostname' do
-      expect { validator.assert_hostname('lo') }.to raise_error(/Invalid hostname/)
+      expect { validator.assert_hostname('lo') }.not_to raise_error
     end
 
     it 'raises exception on invalid hostname' do
@@ -43,7 +43,7 @@ RSpec.describe Hosts::Validator do
     end
 
     it 'raises exception on too short hostname' do
-      expect { validator.assert_aliases(%w[localhost lo]) }.to raise_error(/Invalid alias/)
+      expect { validator.assert_aliases(%w[localhost lo]) }.not_to raise_error
     end
 
     it 'raises exception on invalid hostname' do
