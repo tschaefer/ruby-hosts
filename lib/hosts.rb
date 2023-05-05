@@ -48,7 +48,7 @@ module Hosts
       @tempfile = nil
       @entries = {}
 
-      remote_parse
+      remote_parse if !@remote.nil?
 
       path = @tempfile || @file
       raise ArgumentError, "No such file: #{path}" if !::File.exist?(path)

@@ -27,6 +27,9 @@ Metrics/BlockLength:
     - '**/*.rake'
     - 'spec/**/*.rb'
 
+Metrics/AbcSize:
+  Max: 20
+
 RSpec/ExampleLength:
   CountAsOne:
     - 'array'
