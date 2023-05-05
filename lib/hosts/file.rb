@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-CoreFile = File
-
 module Hosts
   module File # rubocop:disable Style/Documentation
     def parse_file(file)
       entries = []
-      CoreFile.foreach(file) do |line|
+      ::File.foreach(file) do |line|
         next if line.match(/^\s*$/) || line.start_with?(/\s*#/)
 
         (address, hostname, aliases) = line.split(nil, 3)
@@ -26,7 +24,7 @@ module Hosts
 
       content = "#{legend}#{body}\n"
 
-      CoreFile.write(file, content)
+      ::File.write(file, content)
     end
   end
 end

@@ -51,7 +51,7 @@ module Hosts
       remote_parse
 
       path = @tempfile || @file
-      raise ArgumentError, "No such file: #{path}" if !CoreFile.exist?(path)
+      raise ArgumentError, "No such file: #{path}" if !::File.exist?(path)
 
       parse_file(path).each do |entry|
         (address, hostname, aliases) = entry
