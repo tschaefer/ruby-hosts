@@ -1,36 +1,36 @@
 _hostsctl_list() {
-    local cur prev words cword
-    _get_comp_words_by_ref cur prev words cword
+    local cur prev words
+    _get_comp_words_by_ref cur prev words
 
     local options='--help --no-pager --no-legend'
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=($(compgen -W "${options}" -- "$cur"))
+        mapfile -t COMPREPLY < <(compgen -W "${options}" -- "$cur")
         return
     fi
 }
 
 _hostsctl_options() {
-    local cur prev words cword
-    _get_comp_words_by_ref cur prev words cword
+    local cur prev words
+    _get_comp_words_by_ref cur prev words
 
     local options='--help'
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=($(compgen -W "${options}" -- "$cur"))
+        mapfile -t COMPREPLY < <(compgen -W "${options}" -- "$cur")
         return
     fi
 }
 
 
 _hostsctl() {
-    local cur prev words cword
-    _get_comp_words_by_ref cur prev words cword
+    local cur prev words
+    _get_comp_words_by_ref cur prev words
 
     local actions='list add remove set-hostname add-alias remove-alias'
     local options='--help --man --version --file --host'
 
-    local word action
+    local word
     for word in "${words[@]}"; do
         case $word in
             list)
@@ -60,11 +60,11 @@ _hostsctl() {
     esac
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=($(compgen -W "${options}" -- "$cur"))
+        mapfile -t COMPREPLY < <(compgen -W "${options}" -- "$cur")
         return
     fi
 
-    COMPREPLY=($(compgen -W "${actions}" -- "$cur"))
+    mapfile -t COMPREPLY < <(compgen -W "${actions}" -- "$cur")
 
     return
 }
