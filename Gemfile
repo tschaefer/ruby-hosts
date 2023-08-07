@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '3.1.2'
 
 gem 'clamp', '~>1.3.2'
-gem 'net-ssh', '~>7.1.0'
+gem 'net-ssh', '~>7.2.0'
 gem 'pastel', '~>0.8.0'
 gem 'tty-pager', '~>0.14.0'
 gem 'tty-screen', '~>0.8.1'
