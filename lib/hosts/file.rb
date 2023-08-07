@@ -2,6 +2,8 @@
 
 module Hosts
   module File # rubocop:disable Style/Documentation
+    private
+
     def parse_file(file)
       entries = []
       ::File.foreach(file) do |line|

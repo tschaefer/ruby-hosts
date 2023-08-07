@@ -147,5 +147,8 @@ DEPENDENCIES
   tty-screen (~> 0.8.1)
   tty-table (~> 0.12.0)
 
+RUBY VERSION
+   ruby 3.1.2p20
+
 BUNDLED WITH
    2.3.18

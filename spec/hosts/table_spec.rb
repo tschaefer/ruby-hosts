@@ -14,20 +14,20 @@ RSpec.describe Hosts::Table do
   describe '#render_table' do
     context 'with hosts entries' do
       it 'returns simple table' do
-        expect(table.render_table(entries)).to eq('127.0.0.1 localhost')
+        expect(table.send(:render_table, entries)).to eq('127.0.0.1 localhost')
       end
     end
 
     context 'with hosts entries and pretty' do
       it 'returns table with header' do
-        expect(table.render_table(entries, pretty: true))
+        expect(table.send(:render_table, entries, pretty: true))
           .to eq("ADDRESS   HOSTNAME  ALIASES\n───────────────────────────\n127.0.0.1 localhost")
       end
     end
 
     context 'with no hosts entries' do
       it 'returns empty string' do
-        expect(table.render_table([])).to eql('')
+        expect(table.send(:render_table, [])).to eql('')
       end
     end
   end

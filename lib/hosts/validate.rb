@@ -4,6 +4,8 @@ require 'resolv'
 
 module Hosts
   module Validator # rubocop:disable Style/Documentation
+    private
+
     HOSTNAME = /
       (?=^.{2,253}$)
       (?:^(?:(?!-)[a-zA-Z0-9-]{0,62}[a-zA-Z0-9]\.?)+[a-zA-Z0-9]{1,63}$)

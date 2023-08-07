@@ -4,6 +4,8 @@ require 'tty-table'
 
 module Hosts
   module Table # rubocop:disable Style/Documentation
+    private
+
     def render_table(entries, pretty: false) # rubocop:disable Metrics/AbcSize
       seperator = pretty ? "\n" : ' '
 
