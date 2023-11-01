@@ -26,11 +26,12 @@ end
 
 desc 'Start a console session with Hosts loaded'
 task :console do
-  require 'irb'
-  require 'irb/completion'
+  require 'pry'
+  require 'pry-byebug'
+  require 'pry-doc'
   require 'hosts'
 
   ARGV.clear
 
-  IRB.start
+  Pry.start
 end

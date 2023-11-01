@@ -12,7 +12,9 @@ gem 'tty-screen', '~>0.8.1'
 gem 'tty-table', '~>0.12.0'
 
 group :development, :test do
-  gem 'irbtools', require: 'irbtools/binding'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-doc'
   gem 'rake'
   gem 'rspec'
   gem 'rubocop'
