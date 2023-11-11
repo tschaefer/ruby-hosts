@@ -28,6 +28,8 @@ Gem::Specification.new do |spec|
   spec.require_paths         = ['lib']
   spec.required_ruby_version = '>= 3.1'
 
+  spec.post_install_message = 'All your hosts are belong to us!'
+
   spec.metadata['rubygems_mfa_required'] = 'true'
   spec.metadata['source_code_uri']       = 'https://github.com/tschaefer/ruby-hosts'
   spec.metadata['bug_tracker_uri']       = 'https://github.com/tschaefer/ruby-hosts/issues'
