@@ -14,7 +14,7 @@ RSpec.describe Hosts do
   around do |example|
     FileUtils.cp(assert, file.path)
     example.run
-    File.delete(file.path)
+    FileUtils.rm_f(file.path)
   end
 
   describe '#parse' do
