@@ -51,7 +51,8 @@ module Hosts
     def remote_save
       return if @remote.nil?
 
-      remote_execute("echo '#{render_table(list)}' > #{@file}")
+      remote_execute("echo -e '#{@legend}\n' > #{@file}")
+      remote_execute("echo '#{render_table(list)}' >> #{@file}")
     end
   end
 end
