@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift "#{File.dirname(__FILE__)}/lib"
+ROOT_DIR = File.expand_path('..', __dir__)
+$LOAD_PATH.unshift "#{ROOT_DIR}/lib"
 
 def silent
   original_stdout = $stdout.clone
@@ -15,10 +16,9 @@ end
 
 def reload!(print: true)
   puts 'Reloading...' if print
-  root_dir = File.expand_path(__dir__)
   reload_dirs = %w[lib]
   reload_dirs.each do |dir|
-    Dir.glob("#{root_dir}/#{dir}/**/*.rb").each { |f| silent { load(f) } }
+    Dir.glob("#{ROOT_DIR}/#{dir}/**/*.rb").each { |f| silent { load(f) } }
   end
 
   true
