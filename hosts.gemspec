@@ -35,7 +35,7 @@ Gem::Specification.new do |spec|
   spec.metadata['bug_tracker_uri']       = 'https://github.com/tschaefer/ruby-hosts/issues'
 
   spec.add_dependency 'clamp', '~>1.3.2'
-  spec.add_dependency 'net-ssh', '~>7.2.0'
+  spec.add_dependency 'net-ssh', '>=7.2', '<7.4'
   spec.add_dependency 'pastel', '~>0.8.0'
   spec.add_dependency 'tty-pager', '~>0.14.0'
   spec.add_dependency 'tty-screen', '~>0.8.1'
