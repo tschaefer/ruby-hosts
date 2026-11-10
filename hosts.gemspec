@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.bindir                = 'bin'
   spec.executables           = ['hostsctl']
   spec.require_paths         = ['lib']
-  spec.required_ruby_version = '>= 3.1'
+  spec.required_ruby_version = '>= 3.3'
 
   spec.post_install_message = 'All your hosts are belong to us!'
 
